@@ -29,7 +29,7 @@ models:
 
     metrics:
       dbt_metrics_default_calendar:
-        enabled: true
+        enabled: false
         
 vars:
     mybi_host: 'rc1a-uifqtk602qck1es3.mdb.yandexcloud.net'
