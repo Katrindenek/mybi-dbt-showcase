@@ -17,6 +17,17 @@ jobs:
         ports:
           - 9000:9000
           - 8123:8123
+      
+      metabase:
+        image: metabase/metabase:v0.49.6
+        ports: 
+          - 3000:3000
+
+      cube:
+        image: cubejs/cube:latest
+        ports:
+          - 4000:4000
+          - 15432:15432
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -42,6 +53,10 @@ jobs:
         uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt build --full-refresh
+      - name: test cube api
+        uses: kzzzr/mybi-dbt-action@v4
+        with:
+          command: curl http:cube:4000/api/v1/load?query={"measures": ["f_tracker.bounces"]}
       # - name: Setup tmate session
       #   uses: mxschmitt/action-tmate@v3
       #   if: ${{ failure() }}

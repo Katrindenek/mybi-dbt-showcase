@@ -3,9 +3,12 @@
 {
 	"name": "Existing Docker Compose (Extend)",
 
-	"dockerComposeFile": "../docker-compose.yml",
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+		"docker-compose.yml"
+	],
 	"service": "devcontainer",
-	"workspaceFolder": "/workspaces/",
+	"workspaceFolder": "/workspaces",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
